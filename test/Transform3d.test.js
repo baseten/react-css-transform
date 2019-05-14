@@ -188,7 +188,10 @@ describe('<Transform3d />', () => {
           x: 10,
           y: 20,
         },
-        scale: 2,
+        scale: {
+          x: 2,
+          y: 2,
+        },
         rotate: Math.PI / 2,
       };
     });
@@ -202,7 +205,7 @@ describe('<Transform3d />', () => {
       const instance = wrapper.instance();
 
       // https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/matrix
-      // matrix(a, b, c, d, tx, ty) is a shorthand for matrix3d(a, b, 0, 0, c, d, 0, 0, 0, 0, sz, 0, tx, ty, 0, 1).
+      // matrix(a, b, c, d, tx, ty) is a shorthand for matrix3d(a, b, 0, 0, c, d, 0, 0, 0, 0, 1, 0, tx, ty, 0, 1).
 
       expect(instance.matrix[0]).toBeCloseTo(0, 6);
       expect(instance.matrix[1]).toBeCloseTo(2, 6);
@@ -214,7 +217,7 @@ describe('<Transform3d />', () => {
       expect(instance.matrix[7]).toBeCloseTo(0, 6);
       expect(instance.matrix[8]).toBeCloseTo(0, 6);
       expect(instance.matrix[9]).toBeCloseTo(0, 6);
-      expect(instance.matrix[10]).toBeCloseTo(2, 6);
+      expect(instance.matrix[10]).toBeCloseTo(1, 6);
       expect(instance.matrix[11]).toBeCloseTo(0, 6);
       expect(instance.matrix[12]).toBeCloseTo(10, 6);
       expect(instance.matrix[13]).toBeCloseTo(20, 6);
@@ -231,7 +234,7 @@ describe('<Transform3d />', () => {
       expect(instance.matrixWorld[7]).toBeCloseTo(0, 6);
       expect(instance.matrixWorld[8]).toBeCloseTo(0, 6);
       expect(instance.matrixWorld[9]).toBeCloseTo(0, 6);
-      expect(instance.matrixWorld[10]).toBeCloseTo(2, 6);
+      expect(instance.matrixWorld[10]).toBeCloseTo(1, 6);
       expect(instance.matrixWorld[11]).toBeCloseTo(0, 6);
       expect(instance.matrixWorld[12]).toBeCloseTo(0, 6);
       expect(instance.matrixWorld[13]).toBeCloseTo(10, 6);
@@ -262,7 +265,7 @@ describe('<Transform3d />', () => {
       expect(instance.matrix[7]).toBeCloseTo(0, 6);
       expect(instance.matrix[8]).toBeCloseTo(0, 6);
       expect(instance.matrix[9]).toBeCloseTo(0, 6);
-      expect(instance.matrix[10]).toBeCloseTo(2, 6);
+      expect(instance.matrix[10]).toBeCloseTo(1, 6);
       expect(instance.matrix[11]).toBeCloseTo(0, 6);
       expect(instance.matrix[12]).toBeCloseTo(10, 6);
       expect(instance.matrix[13]).toBeCloseTo(20, 6);
@@ -279,7 +282,7 @@ describe('<Transform3d />', () => {
       expect(instance.matrixWorld[7]).toBeCloseTo(0, 6);
       expect(instance.matrixWorld[8]).toBeCloseTo(0, 6);
       expect(instance.matrixWorld[9]).toBeCloseTo(0, 6);
-      expect(instance.matrixWorld[10]).toBeCloseTo(2, 6);
+      expect(instance.matrixWorld[10]).toBeCloseTo(1, 6);
       expect(instance.matrixWorld[11]).toBeCloseTo(0, 6);
       expect(instance.matrixWorld[12]).toBeCloseTo(30, 6);
       expect(instance.matrixWorld[13]).toBeCloseTo(0, 6);
