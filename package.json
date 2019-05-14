@@ -1,0 +1,92 @@
+{
+  "name": "react-css-transform",
+  "version": "1.0.0",
+  "description": "A React component to help handle complex nested 2d and 3d css transformations ",
+  "main": "dist/react-css-transform.cjs.js",
+  "module": "dist/react-css-transform.esm.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c",
+    "prepublishOnly": "npm run build",
+    "lint:eslint": "eslint --config .eslintrc.json",
+    "lint:eslint:fix": "eslint --config .eslintrc.json --fix",
+    "lint:js": "npm run lint:eslint -- . ",
+    "prettify": "prettier --write"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run lint:eslint:fix",
+      "git add --force"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add --force"
+    ]
+  },
+  "pre-commit": "lint:staged",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baseten/react-css-transform.git"
+  },
+  "keywords": [
+    "React",
+    "javascript",
+    "css",
+    "transform",
+    "2d",
+    "3d",
+    "matrix",
+    "matrices",
+    "component"
+  ],
+  "peerDependencies": {
+    "react": "^16.0",
+    "react-dom": "^16.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.4.4",
+    "gl-matrix": "^3.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "eslint": "^5.8.0",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-config-prettier": "3.1.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "3.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "7.11.1",
+    "husky": "^2.2.0",
+    "lint-staged": "^8.1.6",
+    "pre-commit": "1.2.2",
+    "prettier": "1.14.3",
+    "react": "^16.0",
+    "react-dom": "^16.0",
+    "rollup": "^1.11.3",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-node-resolve": "^4.2.4",
+    "rollup-plugin-size-snapshot": "^0.8.0",
+    "rollup-plugin-uglify": "^6.0.2"
+  },
+  "author": "Alex Prokop <alex@alkaline.io> (http://alkaline.io/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/baseten/react-css-transform/issues"
+  },
+  "homepage": "https://github.com/baseten/react-css-transform#readme"
+}

@@ -1,0 +1,94 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["airbnb", "prettier", "prettier/react"],
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true,
+    "es6": true
+  },
+  "plugins": ["prettier", "react"],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "consistent-return": 0,
+    "padded-blocks": 0,
+    "spaced-comment": 0,
+    "semi": ["error", "always"],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ],
+    "arrow-parens": ["error", "as-needed"],
+    "arrow-body-style": [0],
+    "class-methods-use-this": 0,
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "only-multiline",
+        "objects": "only-multiline",
+        "imports": "only-multiline",
+        "exports": "only-multiline",
+        "functions": "ignore"
+      }
+    ],
+    "function-paren-newline": 0,
+    "import/extensions": 0,
+    "import/imports-first": 0,
+    "import/newline-after-import": 0,
+    "import/no-dynamic-require": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/no-named-as-default": 0,
+    "import/no-unresolved": 2,
+    "import/no-webpack-loader-syntax": 0,
+    "import/prefer-default-export": 0,
+    "jsx-a11y/mouse-events-have-key-events": 0,
+    "lines-between-class-members": 0,
+    "newline-per-chained-call": 0,
+    "no-confusing-arrow": 0,
+    "no-console": 1,
+    "no-underscore-dangle": 0,
+    "no-use-before-define": 0,
+    "no-param-reassign": 1,
+    "no-plusplus": 0,
+    "no-prototype-builtins": 0,
+    "no-shadow": 1,
+    "object-curly-newline": 0,
+    "one-var": 0,
+    "one-var-declaration-per-line": [2, "initializations"],
+    "prefer-destructuring": 1,
+    "prefer-template": 2,
+    "react/destructuring-assignment": 1,
+    "react/forbid-prop-types": [1, { "forbid": ["any", "array"] }],
+    "react/jsx-curly-brace-presence": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/no-children-prop": 1,
+    "react/no-did-update-set-state": 0,
+    "react/require-default-props": 0,
+    "react/sort-comp": [
+      1,
+      {
+        "order": [
+          "static-methods",
+          "instance-variables",
+          "lifecycle",
+          "render",
+          "/^render.+$/",
+          "/^on.+$/",
+          "/^handle.+$/",
+          "everything-else"
+        ]
+      }
+    ]
+  }
+}

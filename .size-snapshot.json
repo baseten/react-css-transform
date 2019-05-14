@@ -1,0 +1,26 @@
+{
+  "dist/react-css-transform.js": {
+    "bundled": 98945,
+    "minified": 23588,
+    "gzipped": 7639
+  },
+  "dist/react-css-transform.min.js": {
+    "bundled": 66545,
+    "minified": 13876,
+    "gzipped": 4927
+  },
+  "dist/react-css-transform.esm.js": {
+    "bundled": 9659,
+    "minified": 4431,
+    "gzipped": 1178,
+    "treeshaked": {
+      "rollup": {
+        "code": 3386,
+        "import_statements": 567
+      },
+      "webpack": {
+        "code": 4933
+      }
+    }
+  }
+}
