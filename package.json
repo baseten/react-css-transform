@@ -48,6 +48,7 @@
     "matrices",
     "component"
   ],
+  "sideEffects": false,
   "peerDependencies": {
     "react": "^16.0",
     "react-dom": "^16.0"

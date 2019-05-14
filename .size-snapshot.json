@@ -1,25 +1,25 @@
 {
   "dist/react-css-transform.js": {
-    "bundled": 98945,
-    "minified": 23588,
-    "gzipped": 7639
+    "bundled": 98909,
+    "minified": 23524,
+    "gzipped": 7560
   },
   "dist/react-css-transform.min.js": {
-    "bundled": 66545,
-    "minified": 13876,
-    "gzipped": 4927
+    "bundled": 66509,
+    "minified": 13813,
+    "gzipped": 4852
   },
   "dist/react-css-transform.esm.js": {
-    "bundled": 9659,
-    "minified": 4431,
-    "gzipped": 1178,
+    "bundled": 9623,
+    "minified": 4415,
+    "gzipped": 1208,
     "treeshaked": {
       "rollup": {
-        "code": 3386,
+        "code": 3309,
         "import_statements": 567
       },
       "webpack": {
-        "code": 4933
+        "code": 4856
       }
     }
   }
