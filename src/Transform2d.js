@@ -16,7 +16,7 @@ export default class Transform2d extends React.Component {
 
   static defaultProps = {
     parentMatrixWorld: mat2d.create(),
-    multiplicationOrder: Transform2d.MULTIPLICATION_ORDER.POST,
+    multiplicationOrder: MULTIPLICATION_ORDER.POST,
   };
 
   matrix = mat2d.create();
@@ -51,9 +51,9 @@ export default class Transform2d extends React.Component {
     mat2d.rotate(matrix, matrix, rotate || 0);
     mat2d.scale(matrix, matrix, vScale);
 
-    if (multiplicationOrder === Transform2d.MULTIPLICATION_ORDER.PRE) {
+    if (multiplicationOrder === MULTIPLICATION_ORDER.PRE) {
       mat2d.multiply(matrixWorld, matrix, parentMatrixWorld);
-    } else if (multiplicationOrder === Transform2d.MULTIPLICATION_ORDER.POST) {
+    } else if (multiplicationOrder === MULTIPLICATION_ORDER.POST) {
       mat2d.multiply(matrixWorld, parentMatrixWorld, matrix);
     }
 

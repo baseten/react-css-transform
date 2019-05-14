@@ -2,3 +2,4 @@
 .size-snapshot.json
 dist
 node_modules
+coverage

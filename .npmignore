@@ -1,1 +1,5 @@
 /.*
+coverage
+test
+jest
+jest.config.js
