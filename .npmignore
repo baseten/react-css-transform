@@ -1,5 +1,7 @@
 /.*
 coverage
-test
+examples
 jest
+test
 jest.config.js
+rollup.config.js

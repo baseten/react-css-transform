@@ -1,0 +1,27 @@
+{
+  "name": "3d-cubes",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "gl-matrix": "^3.0.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-css-transform": "^1.0.0",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "react-scripts": "^3.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "test": "react-scripts test --env=node"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

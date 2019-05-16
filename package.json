@@ -51,7 +51,8 @@
   "sideEffects": false,
   "peerDependencies": {
     "react": "^16.0",
-    "react-dom": "^16.0"
+    "react-dom": "^16.0",
+    "prop-types": "^15.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.4.4",
@@ -84,6 +85,7 @@
     "lint-staged": "^8.1.6",
     "pre-commit": "1.2.2",
     "prettier": "1.14.3",
+    "prop-types": "^15.7.2",
     "react": "^16.0",
     "react-dom": "^16.0",
     "rimraf": "^2.6.3",
