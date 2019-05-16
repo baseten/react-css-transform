@@ -2,16 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { mat4, vec3 } from 'gl-matrix';
 
-import { MULTIPLICATION_ORDER } from './constants';
+import { MULTIPLICATION_ORDER, vec3Shape, glMatrixType } from './constants';
 
 export default class Transform3d extends React.Component {
   static propTypes = {
-    parentMatrixWorld: PropTypes.oneOfType([PropTypes.instanceOf(Float32Array), PropTypes.arrayOf(PropTypes.number)]),
+    parentMatrixWorld: glMatrixType,
     multiplicationOrder: PropTypes.oneOf([MULTIPLICATION_ORDER.PRE, MULTIPLICATION_ORDER.POST]),
-    translate: PropTypes.object,
-    scale: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
+    translate: vec3Shape,
+    scale: PropTypes.oneOfType([vec3Shape, PropTypes.number]),
     rotate: PropTypes.number,
-    rotateAxis: PropTypes.object,
+    rotateAxis: vec3Shape,
     children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
   };
 

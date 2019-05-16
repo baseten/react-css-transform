@@ -42,14 +42,14 @@ export const MULTIPLICATION_ORDER = {
 };
 
 export const vec2Shape = PropTypes.shape({
-  x: PropTypes.number.isRequired,
-  y: PropTypes.number.isRequired,
+  x: PropTypes.number,
+  y: PropTypes.number,
 });
 
 export const vec3Shape = PropTypes.shape({
-  x: PropTypes.number.isRequired,
-  y: PropTypes.number.isRequired,
-  z: PropTypes.number.isRequired,
+  x: PropTypes.number,
+  y: PropTypes.number,
+  z: PropTypes.number,
 });
 
 export const glMatrixType = PropTypes.instanceOf(glMatrix.ARRAY_TYPE);

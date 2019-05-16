@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { mat2d, vec2 } from 'gl-matrix';
 
-import { MULTIPLICATION_ORDER } from './constants';
+import { MULTIPLICATION_ORDER, vec2Shape, glMatrixType } from './constants';
 
 export default class Transform2d extends React.Component {
   static propTypes = {
-    parentMatrixWorld: PropTypes.oneOfType([PropTypes.instanceOf(Float32Array), PropTypes.arrayOf(PropTypes.number)]),
+    parentMatrixWorld: glMatrixType,
     multiplicationOrder: PropTypes.oneOf([MULTIPLICATION_ORDER.PRE, MULTIPLICATION_ORDER.POST]),
-    translate: PropTypes.object,
-    scale: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
-    rotate: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
+    translate: vec2Shape,
+    scale: PropTypes.oneOfType([vec2Shape, glMatrixType, PropTypes.number]),
+    rotate: PropTypes.number,
     children: PropTypes.node.isRequired,
   };
 
