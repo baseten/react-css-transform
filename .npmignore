@@ -2,6 +2,7 @@
 coverage
 examples
 jest
+src
 test
 jest.config.js
 rollup.config.js

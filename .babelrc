@@ -1,22 +1,15 @@
 {
-  "presets": [
-    [
-      "@babel/preset-env",
-      {
-        "modules": false
-      }
-    ],
-    "@babel/preset-react"
-  ],
-  "plugins": [
-    "@babel/plugin-proposal-class-properties",
-    "babel-plugin-transform-react-remove-prop-types"
-  ],
+  "presets": ["@babel/preset-env", "@babel/preset-react"],
+  "plugins": ["@babel/plugin-proposal-class-properties", "babel-plugin-transform-react-remove-prop-types"],
   "env": {
+    "cjs": {
+      "presets": [["@babel/env", { "modules": "commonjs" }], "@babel/preset-react"]
+    },
+    "esm": {
+      "presets": [["@babel/env", { "modules": false }], "@babel/preset-react"]
+    },
     "test": {
-      "plugins": [
-        "@babel/plugin-transform-modules-commonjs"
-      ]
+      "plugins": ["@babel/plugin-transform-modules-commonjs"]
     }
   }
 }

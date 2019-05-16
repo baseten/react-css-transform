@@ -1,3 +1,6 @@
+import PropTypes from 'prop-types';
+import { glMatrix } from 'gl-matrix';
+
 export const MULTIPLICATION_ORDER = {
   /**
    * This is the default, more natural mathematically and (arguably) more useful, it behaves in the same order as when
@@ -37,3 +40,16 @@ export const MULTIPLICATION_ORDER = {
    */
   PRE: 'PRE',
 };
+
+export const vec2Shape = PropTypes.shape({
+  x: PropTypes.number.isRequired,
+  y: PropTypes.number.isRequired,
+});
+
+export const vec3Shape = PropTypes.shape({
+  x: PropTypes.number.isRequired,
+  y: PropTypes.number.isRequired,
+  z: PropTypes.number.isRequired,
+});
+
+export const glMatrixType = PropTypes.instanceOf(glMatrix.ARRAY_TYPE);

@@ -4,7 +4,6 @@ import resolve from 'rollup-plugin-node-resolve';
 import replace from 'rollup-plugin-replace';
 import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
 import { uglify } from 'rollup-plugin-uglify';
-import pkg from './package.json';
 
 const getBabelOptions = ({ useESModules }) => ({
   exclude: 'node_modules/**',
@@ -16,12 +15,12 @@ const commonjsOptions = {
   include: '**/node_modules/**',
 };
 
-const isExternal = id => !id.startsWith('.') && !id.startsWith('/');
-
 const input = './src/index.js';
 const name = 'ReactCssTransform';
 const globals = {
   react: 'React',
+  'react-dom': 'ReactDOM',
+  'prop-types': 'PropTypes',
 };
 
 const umd = [
@@ -62,18 +61,4 @@ const umd = [
   },
 ];
 
-const es = {
-  input,
-  output: { file: pkg.module, format: 'es' },
-  external: isExternal,
-  plugins: [babel(getBabelOptions({ useESModules: true })), sizeSnapshot()],
-};
-
-const cjs = {
-  input,
-  output: { file: pkg.main, format: 'cjs' },
-  external: isExternal,
-  plugins: [babel(getBabelOptions({ useESModules: false }))],
-};
-
-export default [...umd, es, cjs];
+export default umd;
