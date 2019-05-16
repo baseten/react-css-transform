@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-//import { glMatrixShape, vec3Shape } from 'react-css-transform';
+//import { glMatrixType, vec3Shape } from 'react-css-transform';
 import { vec3, mat3 } from 'gl-matrix';
 
 function hexStringToRgb(hexString) {
