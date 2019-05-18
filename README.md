@@ -8,3 +8,7 @@ combinations of nested transformations trivial.
 for a zoomable/pannable map with markers.
 
 More docs coming soon!
+
+[3D Cubes Example](https://baseten.github.io/react-css-transform/3d-cubes/index.html)
+
+![3D Cubes GIF](https://baseten.github.io/react-css-transform/3d-cubes.gif)
