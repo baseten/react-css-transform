@@ -4,16 +4,18 @@ import { glMatrixType } from 'react-css-transform';
 import { vec3, mat3 } from 'gl-matrix';
 
 function hexStringToRgb(hexString) {
+  let parsedHexString;
+
   if (hexString.length === 4) {
-    hexString = hexString[1] + hexString[1] + hexString[2] + hexString[2] + hexString[3] + hexString[3];
+    parsedHexString = hexString[1] + hexString[1] + hexString[2] + hexString[2] + hexString[3] + hexString[3];
   } else {
-    hexString = hexString.substring(1);
+    parsedHexString = hexString.substring(1);
   }
 
   return [
-    parseInt(hexString[0] + hexString[1], 16),
-    parseInt(hexString[2] + hexString[3], 16),
-    parseInt(hexString[4] + hexString[5], 16),
+    parseInt(parsedHexString[0] + parsedHexString[1], 16),
+    parseInt(parsedHexString[2] + parsedHexString[3], 16),
+    parseInt(parsedHexString[4] + hexString[5], 16),
   ];
 }
 

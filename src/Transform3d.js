@@ -32,10 +32,6 @@ export default class Transform3d extends React.Component {
   vScale = vec3.create();
   vRotationAxis = vec3.create();
 
-  childProps = {
-    style: {},
-  };
-
   render() {
     const { children, parentMatrixWorld, multiplicationOrder, translate, rotate, rotateAxis, scale } = this.props;
     const { matrix, matrixWorld, vTranslation, vScale, vRotationAxis } = this;
@@ -74,15 +70,17 @@ export default class Transform3d extends React.Component {
 
   renderChild = child => {
     const { multiplicationOrder } = this.props;
-    const { matrixWorld, childProps } = this;
+    const { matrixWorld } = this;
 
-    const childStyle = child.props.style;
+    const childStyle = child.props.style || {};
+    const style = {
+      ...childStyle,
+      transform: `matrix3d(${matrixWorld.join(',')})`,
+    };
 
-    if (childStyle) {
-      Object.assign(childProps.style, childStyle);
-    }
-
-    childProps.style.transform = `matrix3d(${matrixWorld.join(',')})`;
+    const childProps = {
+      style,
+    };
 
     if (typeof child.type !== 'string') {
       childProps.parentMatrixWorld = matrixWorld;

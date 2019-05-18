@@ -1,3 +1,5 @@
+import '@babel/polyfill';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Transform3d } from 'react-css-transform';
@@ -13,11 +15,11 @@ class App extends React.Component {
     windowWidth: window.innerWidth,
     windowHeight: window.innerHeight,
     playing: true,
+    appStyle: {
+      perspective: 500,
+    },
   };
 
-  appStyle = {
-    perspective: 500
-  };
   translateToCentre = vec3.create();
   cubeGroup1Translate = vec3.create();
   cubeGroup2Translate = vec3.create();
@@ -26,6 +28,7 @@ class App extends React.Component {
     window.addEventListener('resize', this.handleResize);
     window.addEventListener('keyup', this.handleKeyUp);
 
+    this.handleResize();
     this.play();
   }
 
@@ -38,8 +41,8 @@ class App extends React.Component {
   }
 
   render() {
-    const { time, windowWidth, windowHeight } = this.state;
-    const { translateToCentre, cubeGroup1Translate, cubeGroup2Translate, appStyle } = this;
+    const { time, windowWidth, windowHeight, appStyle } = this.state;
+    const { translateToCentre, cubeGroup1Translate, cubeGroup2Translate } = this;
     const frameTime = 1000 / 60;
     const theta = (time / frameTime) * 0.04;
 
@@ -47,8 +50,6 @@ class App extends React.Component {
 
     const cubeFaceSize = (110 / 750) * windowHeight;
     const cubeGroupSpacing = cubeFaceSize * 2.25;
-
-    appStyle.perspective = (500 / 750) * windowHeight;
 
     vec3.set(cubeGroup1Translate, cubeGroupSpacing, 0, 0);
     vec3.set(cubeGroup2Translate, -cubeGroupSpacing, 0, 0);
@@ -82,6 +83,9 @@ class App extends React.Component {
     this.setState({
       windowWidth: window.innerWidth,
       windowHeight: window.innerHeight,
+      appStyle: {
+        perspective: (500 / 750) * window.innerHeight,
+      },
     });
   };
 
