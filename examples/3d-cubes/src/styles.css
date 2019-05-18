@@ -29,15 +29,3 @@ body {
   top: 0;
   backface-visibility: hidden;
 }
-
-.-red {
-  background-color: #f00;
-}
-
-.-green {
-  background-color: #0f0;
-}
-
-.-blue {
-  background-color: #00f;
-}

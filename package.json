@@ -53,9 +53,9 @@
   ],
   "sideEffects": false,
   "peerDependencies": {
-    "react": "^16.0",
-    "prop-types": "^15.0",
-    "gl-matrix": "^3.0.0"
+    "react": ">= 16.0",
+    "prop-types": ">= 15.0",
+    "gl-matrix": ">= 3.0.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.4.4"
