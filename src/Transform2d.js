@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import { mat2d, vec2 } from 'gl-matrix';
 
 import { MULTIPLICATION_ORDER, vec2Shape, glMatrixType } from './constants';
+import { setVec2FromProp } from './utils';
 
 export default class Transform2d extends React.Component {
   static propTypes = {
     parentMatrixWorld: glMatrixType,
     multiplicationOrder: PropTypes.oneOf([MULTIPLICATION_ORDER.PRE, MULTIPLICATION_ORDER.POST]),
-    translate: vec2Shape,
-    scale: PropTypes.oneOfType([vec2Shape, glMatrixType, PropTypes.number]),
+    translate: PropTypes.oneOfType([glMatrixType, vec2Shape]),
+    scale: PropTypes.oneOfType([glMatrixType, vec2Shape, PropTypes.number]),
     rotate: PropTypes.number,
     children: PropTypes.node.isRequired,
   };
@@ -28,23 +29,10 @@ export default class Transform2d extends React.Component {
     const { children, parentMatrixWorld, multiplicationOrder, translate, scale, rotate } = this.props;
     const { matrix, matrixWorld, vTranslation, vScale } = this;
 
-    const tx = translate && translate.x ? translate.x : 0;
-    const ty = translate && translate.y ? translate.y : 0;
-
-    let sx, sy;
-
-    if (typeof scale === 'number') {
-      sx = scale;
-      sy = scale;
-    } else {
-      sx = scale && scale.x ? scale.x : 1;
-      sy = scale && scale.y ? scale.y : 1;
-    }
-
-    vec2.set(vTranslation, tx, ty);
-    vec2.set(vScale, sx, sy);
-
     mat2d.identity(matrix);
+
+    setVec2FromProp(vTranslation, translate);
+    setVec2FromProp(vScale, scale, 1);
 
     // T * R * S
     mat2d.translate(matrix, matrix, vTranslation);

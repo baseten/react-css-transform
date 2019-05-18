@@ -5,7 +5,7 @@ import { FlatMaterial } from './FlatMaterial';
 import { halfPi, yAxis, xAxis } from '../constants';
 
 export function Cube(props) {
-  const { faceSize, color, shadowColor, ...otherProps } = props;
+  const { faceSize, color, ...otherProps } = props;
 
   const halfFaceSize = faceSize / 2;
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-//import { glMatrixType, vec3Shape } from 'react-css-transform';
+import { glMatrixType } from 'react-css-transform';
 import { vec3, mat3 } from 'gl-matrix';
 
 function hexStringToRgb(hexString) {
@@ -88,7 +88,7 @@ export class FlatMaterial extends React.Component {
 
 FlatMaterial.propTypes = {
   color: PropTypes.string.isRequired,
-  parentMatrixWorld: PropTypes.oneOfType([PropTypes.instanceOf(Float32Array), PropTypes.array]),
+  parentMatrixWorld: glMatrixType,
   style: PropTypes.object,
   children: PropTypes.node.isRequired,
 };
