@@ -1,4 +1,5 @@
 [![npm version](https://badge.fury.io/js/react-css-transform.svg)](https://badge.fury.io/js/react-css-transform)
+![dependencies](https://david-dm.org/baseten/react-css-transform.svg)
 
 # React CSS Transform
 
