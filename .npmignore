@@ -1,8 +1,11 @@
 /.*
 coverage
 examples
+img
 jest
 src
 test
+website
+index.html
 jest.config.js
 rollup.config.js

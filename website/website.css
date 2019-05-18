@@ -1,0 +1,32 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.wrapper {
+  margin: 16px;
+}
+
+.examples-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.examples-list__item {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.examples-list__link {
+  color: #007FFF;
+  text-decoration: none;
+}
+
+.examples-list__link:hover {
+  color: #007FFF;
+  text-decoration: underline;
+}

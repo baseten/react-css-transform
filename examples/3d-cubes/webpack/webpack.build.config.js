@@ -6,7 +6,9 @@ const TerserPlugin = require('terser-webpack-plugin');
 const { env } = require('process');
 
 const config = require('./webpack.base.config');
+
 const projectPath = resolve(__dirname, '..');
+const rootPath = resolve(projectPath, '..', '..');
 
 const devBuild = env.NODE_ENV === 'development';
 
@@ -14,7 +16,7 @@ const buildConfig = {
   output: {
     filename: '[name]-[chunkhash].js',
     chunkFilename: '[name]-[chunkhash].chunk.js',
-    path: `${projectPath}/build`,
+    path: `${rootPath}/website/3d-cubes`,
   },
 };
 

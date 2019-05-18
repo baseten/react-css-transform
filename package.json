@@ -12,7 +12,7 @@
     "build:esm": "cross-env BABEL_ENV=esm babel src -d dist/esm",
     "build:cjs": "cross-env BABEL_ENV=cjs babel src -d dist/cjs",
     "build:umd": "rollup -c",
-    "xprebuild": "npm run test",
+    "prebuild": "npm run test",
     "build": "npm run build:umd && npm run build:esm && npm run build:cjs",
     "prepublishOnly": "npm run build",
     "lint:eslint": "eslint --config .eslintrc.json",

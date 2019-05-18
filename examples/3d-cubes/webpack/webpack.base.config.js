@@ -1,6 +1,3 @@
-// Common client-side webpack configuration used by
-// webpack.client.rails.hot.config and webpack.client.rails.build.config.
-
 const webpack = require('webpack');
 const { resolve } = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
