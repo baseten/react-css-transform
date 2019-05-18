@@ -41,7 +41,7 @@ transform-style: preserve-3d;
 perspective: 500px;
 ```
 
-### <Transform2d />
+### &lt;Transform2d />
 
 The styles provided to the `<div />` below will be merged with the computed CSS `matrix` transform
 
@@ -83,7 +83,7 @@ nothing is supplied no scaling occurs.
 **Optional**. The transform's rotation. A number provided in **radians**. If nothing is 
 supplied no rotation occurs.
 
-### <Transform3d />
+### &lt;Transform3d />
 
 The styles provided to the `<div />` below will be merged with the CSS `matrix3d` transform
 
