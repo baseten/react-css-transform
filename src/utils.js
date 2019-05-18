@@ -18,8 +18,8 @@ export function setVec2FromProp(v, prop, defaultValue = 0) {
     if (isArray) {
       [x, y] = prop;
     } else if (typeof prop === 'object') {
-      x = prop.x || defaultValue;
-      y = prop.y || defaultValue;
+      x = prop.x !== undefined ? prop.x : defaultValue;
+      y = prop.y !== undefined ? prop.y : defaultValue;
     }
   }
 
@@ -46,9 +46,9 @@ export function setVec3FromProp(v, prop, defaultX = 0, defaultY = 0, defaultZ = 
     if (isArray) {
       [x, y, z] = prop;
     } else if (typeof prop === 'object') {
-      x = prop.x || defaultX;
-      y = prop.y || defaultY;
-      z = prop.z || defaultZ;
+      x = prop.x !== undefined ? prop.x : defaultX;
+      y = prop.y !== undefined ? prop.y : defaultY;
+      z = prop.z !== undefined ? prop.z : defaultZ;
     }
   }
 

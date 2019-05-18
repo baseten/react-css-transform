@@ -25,9 +25,15 @@ export default class Transform2d extends React.Component {
   vTranslation = vec2.create();
   vScale = vec2.create();
 
+  childProps = {
+    style: {},
+  };
+
   render() {
     const { children, parentMatrixWorld, multiplicationOrder, translate, scale, rotate } = this.props;
     const { matrix, matrixWorld, vTranslation, vScale } = this;
+
+    const theta = typeof rotate === 'number' ? rotate : 0;
 
     mat2d.identity(matrix);
 
@@ -36,7 +42,7 @@ export default class Transform2d extends React.Component {
 
     // T * R * S
     mat2d.translate(matrix, matrix, vTranslation);
-    mat2d.rotate(matrix, matrix, rotate || 0);
+    mat2d.rotate(matrix, matrix, theta);
     mat2d.scale(matrix, matrix, vScale);
 
     if (multiplicationOrder === MULTIPLICATION_ORDER.PRE) {
@@ -60,17 +66,15 @@ export default class Transform2d extends React.Component {
 
   renderChild = child => {
     const { multiplicationOrder } = this.props;
-    const { matrixWorld } = this;
+    const { matrixWorld, childProps } = this;
 
-    const childStyle = child.props.style || {};
-    const style = {
-      ...childStyle,
-      transform: `matrix(${matrixWorld.join(',')})`,
-    };
+    const childStyle = child.props.style;
 
-    const childProps = {
-      style,
-    };
+    if (childStyle) {
+      Object.assign(childProps.style, childStyle);
+    }
+
+    childProps.style.transform = `matrix(${matrixWorld.join(',')})`;
 
     if (typeof child.type !== 'string') {
       childProps.parentMatrixWorld = matrixWorld;

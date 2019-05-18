@@ -29,6 +29,54 @@ describe('<Transform3d />', () => {
     };
   });
 
+  it('sets the vTranslation vec3 correctly when no prop is passed', () => {
+    delete props.translate;
+
+    const wrapper = shallow(
+      <Transform3d {...props}>
+        <div />
+      </Transform3d>
+    );
+
+    const instance = wrapper.instance();
+
+    expect(instance.vTranslation[0]).toEqual(0);
+    expect(instance.vTranslation[1]).toEqual(0);
+    expect(instance.vTranslation[2]).toEqual(0);
+  });
+
+  it('sets the vScale vec3 correctly when no prop is passed', () => {
+    delete props.scale;
+
+    const wrapper = shallow(
+      <Transform3d {...props}>
+        <div />
+      </Transform3d>
+    );
+
+    const instance = wrapper.instance();
+
+    expect(instance.vScale[0]).toEqual(1);
+    expect(instance.vScale[1]).toEqual(1);
+    expect(instance.vScale[2]).toEqual(1);
+  });
+
+  it('sets the vRotationAxis vec3 correctly when no prop is passed', () => {
+    delete props.rotateAxis;
+
+    const wrapper = shallow(
+      <Transform3d {...props}>
+        <div />
+      </Transform3d>
+    );
+
+    const instance = wrapper.instance();
+
+    expect(instance.vRotationAxis[0]).toEqual(0);
+    expect(instance.vRotationAxis[1]).toEqual(0);
+    expect(instance.vRotationAxis[2]).toEqual(1);
+  });
+
   it('renders an HTML child with a style tag and performs the correct matrix calculations', () => {
     const wrapper = shallow(
       <Transform3d {...props}>

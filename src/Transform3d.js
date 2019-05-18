@@ -32,9 +32,15 @@ export default class Transform3d extends React.Component {
   vScale = vec3.create();
   vRotationAxis = vec3.create();
 
+  childProps = {
+    style: {},
+  };
+
   render() {
     const { children, parentMatrixWorld, multiplicationOrder, translate, rotate, rotateAxis, scale } = this.props;
     const { matrix, matrixWorld, vTranslation, vScale, vRotationAxis } = this;
+
+    const theta = typeof rotate === 'number' ? rotate : 0;
 
     mat4.identity(matrix);
 
@@ -44,7 +50,7 @@ export default class Transform3d extends React.Component {
 
     // T * R * S
     mat4.translate(matrix, matrix, vTranslation);
-    mat4.rotate(matrix, matrix, rotate || 0, vRotationAxis);
+    mat4.rotate(matrix, matrix, theta, vRotationAxis);
     mat4.scale(matrix, matrix, vScale);
 
     if (multiplicationOrder === MULTIPLICATION_ORDER.PRE) {
@@ -68,17 +74,15 @@ export default class Transform3d extends React.Component {
 
   renderChild = child => {
     const { multiplicationOrder } = this.props;
-    const { matrixWorld } = this;
+    const { matrixWorld, childProps } = this;
 
-    const childStyle = child.props.style || {};
-    const style = {
-      ...childStyle,
-      transform: `matrix3d(${matrixWorld.join(',')})`,
-    };
+    const childStyle = child.props.style;
 
-    const childProps = {
-      style,
-    };
+    if (childStyle) {
+      Object.assign(childProps.style, childStyle);
+    }
+
+    childProps.style.transform = `matrix3d(${matrixWorld.join(',')})`;
 
     if (typeof child.type !== 'string') {
       childProps.parentMatrixWorld = matrixWorld;

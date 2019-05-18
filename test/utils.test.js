@@ -58,6 +58,14 @@ describe('utils', () => {
         expect(res[1]).toEqual(1);
       });
 
+      it('returns a vec2 with the correct values when the prop is a partial object with x set to 0 and a default value is set', () => {
+        const res = setVec2FromProp(out, { x: 0 }, 1);
+
+        expect(res).toBe(out);
+        expect(res[0]).toEqual(0);
+        expect(res[1]).toEqual(1);
+      });
+
       it('returns a vec2 with the correct values when the prop is a partial object with y', () => {
         const res = setVec2FromProp(out, { y: 10 });
 
@@ -72,6 +80,14 @@ describe('utils', () => {
         expect(res).toBe(out);
         expect(res[0]).toEqual(1);
         expect(res[1]).toEqual(10);
+      });
+
+      it('returns a vec2 with the correct values when the prop is a partial object with y set to 0 and a default value is set', () => {
+        const res = setVec2FromProp(out, { y: 0 }, 1);
+
+        expect(res).toBe(out);
+        expect(res[0]).toEqual(1);
+        expect(res[1]).toEqual(0);
       });
 
       it('returns a vec2 with the correct values when the prop is a vec2', () => {
@@ -174,6 +190,15 @@ describe('utils', () => {
         expect(res[2]).toEqual(3);
       });
 
+      it('returns a vec3 with the correct values when the prop is a partial object with x set to 0 and default values are set', () => {
+        const res = setVec3FromProp(out, { x: 0 }, 1, 2, 3);
+
+        expect(res).toBe(out);
+        expect(res[0]).toEqual(0);
+        expect(res[1]).toEqual(2);
+        expect(res[2]).toEqual(3);
+      });
+
       it('returns a vec3 with the correct values when the prop is a partial object with y', () => {
         const res = setVec3FromProp(out, { y: 10 });
 
@@ -192,6 +217,15 @@ describe('utils', () => {
         expect(res[2]).toEqual(3);
       });
 
+      it('returns a vec3 with the correct values when the prop is a partial object with y set to 0 and default values are set', () => {
+        const res = setVec3FromProp(out, { y: 0 }, 1, 2, 3);
+
+        expect(res).toBe(out);
+        expect(res[0]).toEqual(1);
+        expect(res[1]).toEqual(0);
+        expect(res[2]).toEqual(3);
+      });
+
       it('returns a vec3 with the correct values when the prop is a partial object with z', () => {
         const res = setVec3FromProp(out, { z: 10 });
 
@@ -201,13 +235,22 @@ describe('utils', () => {
         expect(res[2]).toEqual(10);
       });
 
-      it('returns a vec3 with the correct values when the prop is a partial object with y and default values are set', () => {
+      it('returns a vec3 with the correct values when the prop is a partial object with z and default values are set', () => {
         const res = setVec3FromProp(out, { z: 10 }, 1, 2, 3);
 
         expect(res).toBe(out);
         expect(res[0]).toEqual(1);
         expect(res[1]).toEqual(2);
         expect(res[2]).toEqual(10);
+      });
+
+      it('returns a vec3 with the correct values when the prop is a partial object with z set to 0 and default values are set', () => {
+        const res = setVec3FromProp(out, { z: 0 }, 1, 2, 3);
+
+        expect(res).toBe(out);
+        expect(res[0]).toEqual(1);
+        expect(res[1]).toEqual(2);
+        expect(res[2]).toEqual(0);
       });
 
       it('returns a vec3 with the correct values when the prop is a vec3', () => {

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Transform3d } from 'react-css-transform';
+import { vec3 } from 'gl-matrix';
 import { CubeGroup } from './components/CubeGroup';
 import { yAxis, zAxis } from './constants';
 
@@ -13,6 +14,13 @@ class App extends React.Component {
     windowHeight: window.innerHeight,
     playing: true,
   };
+
+  appStyle = {
+    perspective: 500
+  };
+  translateToCentre = vec3.create();
+  cubeGroup1Translate = vec3.create();
+  cubeGroup2Translate = vec3.create();
 
   componentDidMount() {
     window.addEventListener('resize', this.handleResize);
@@ -31,29 +39,28 @@ class App extends React.Component {
 
   render() {
     const { time, windowWidth, windowHeight } = this.state;
+    const { translateToCentre, cubeGroup1Translate, cubeGroup2Translate, appStyle } = this;
     const frameTime = 1000 / 60;
     const theta = (time / frameTime) * 0.04;
 
-    const translateToCentre = {
-      x: windowWidth / 2,
-      y: windowHeight / 2,
-      z: -400,
-    };
+    vec3.set(translateToCentre, windowWidth / 2, windowHeight / 2, -400);
 
     const cubeFaceSize = (110 / 750) * windowHeight;
     const cubeGroupSpacing = cubeFaceSize * 2.25;
-    const appStyle = {
-      perspective: (500 / 750) * windowHeight,
-    };
+
+    appStyle.perspective = (500 / 750) * windowHeight;
+
+    vec3.set(cubeGroup1Translate, cubeGroupSpacing, 0, 0);
+    vec3.set(cubeGroup2Translate, -cubeGroupSpacing, 0, 0);
 
     return (
       <div className="app" style={appStyle}>
         <Transform3d translate={translateToCentre} rotate={theta} rotateAxis={yAxis}>
           <Transform3d rotate={theta} rotateAxis={zAxis}>
-            <Transform3d translate={{ x: cubeGroupSpacing }}>
+            <Transform3d translate={cubeGroup1Translate}>
               <CubeGroup cubeFaceSize={cubeFaceSize} time={time} />
             </Transform3d>
-            <Transform3d translate={{ x: -cubeGroupSpacing }}>
+            <Transform3d translate={cubeGroup2Translate}>
               <CubeGroup cubeFaceSize={cubeFaceSize} time={time} />
             </Transform3d>
           </Transform3d>
