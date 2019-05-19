@@ -2,17 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { mat4, vec3 } from 'gl-matrix';
 
-import { MULTIPLICATION_ORDER, vec3Shape, glMatrixType } from './constants';
+import { MULTIPLICATION_ORDER, vec3Obj, vec3GlMatrix, mat4GlMatrix } from './constants';
 import { setVec3FromProp } from './utils';
 
 export default class Transform3d extends React.Component {
   static propTypes = {
-    parentMatrixWorld: glMatrixType,
+    parentMatrixWorld: mat4GlMatrix,
     multiplicationOrder: PropTypes.oneOf([MULTIPLICATION_ORDER.PRE, MULTIPLICATION_ORDER.POST]),
-    translate: PropTypes.oneOfType([glMatrixType, vec3Shape]),
-    scale: PropTypes.oneOfType([glMatrixType, vec3Shape, PropTypes.number]),
+    translate: PropTypes.oneOfType([vec3GlMatrix, vec3Obj]),
+    scale: PropTypes.oneOfType([vec3GlMatrix, vec3Obj, PropTypes.number]),
     rotate: PropTypes.number,
-    rotateAxis: PropTypes.oneOfType([glMatrixType, vec3Shape]),
+    rotateAxis: PropTypes.oneOfType([vec3GlMatrix, vec3Obj]),
     children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
   };
 
@@ -51,7 +51,7 @@ export default class Transform3d extends React.Component {
 
     if (multiplicationOrder === MULTIPLICATION_ORDER.PRE) {
       mat4.multiply(matrixWorld, matrix, parentMatrixWorld);
-    } else if (multiplicationOrder === MULTIPLICATION_ORDER.POST) {
+    } else {
       mat4.multiply(matrixWorld, parentMatrixWorld, matrix);
     }
 
@@ -60,7 +60,7 @@ export default class Transform3d extends React.Component {
         parentMatrixWorld: matrixWorld,
         multiplicationOrder,
         style: {
-          transform: matrixWorld.join(','),
+          transform: `matrix3d(${matrixWorld.join(',')})`,
         },
       });
     }

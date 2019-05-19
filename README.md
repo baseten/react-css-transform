@@ -156,6 +156,10 @@ to pass scale in as an object rather than a number (otherwise z will be scaled t
 
 ### Performance
 
+When running in development mode, `propTypes` checking can cause significant performance 
+bottlenecks particularly if running `render` in a `requestAnimationFrame`. If you're 
+seeing performance issues, try running a production build first.
+
 With standard React apps you've probably got used to declaring lambdas and object literals
 inline in your render method. People sometimes talk about how this is a performance hit, 
 but realistically for standard UI where renders are mostly limited to user interaction, 
@@ -171,8 +175,9 @@ performance optimization don't do it unless you need to. Just sayin' :)
 
 IE10 and IE11 famously don't support `preserve-3d`. To a certain extent this library can
 help with issues here because it won't create any nested DOM elements, but will compute
-the correct matrices to use on a single set of children. Realistically doing complex 3D 
-transformations in these browsers is not possible - but is nothing to do with this library :)
+the correct matrices to use on a single set of children. However, you will still very
+likely run into z order issues as IE will maintain DOM / z-index order over 3D z position, 
+so doing complex 3D transformations in these browsers is not really possible.
 
 ## How it works
 

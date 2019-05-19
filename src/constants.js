@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types';
-import { glMatrix } from 'gl-matrix';
+import { isVec2, isVec3, isMat2d, isMat4, isVec2Shape, isVec3Shape } from './utils';
 
 export const MULTIPLICATION_ORDER = {
   /**
@@ -41,15 +40,32 @@ export const MULTIPLICATION_ORDER = {
   PRE: 'PRE',
 };
 
-export const vec2Shape = PropTypes.shape({
-  x: PropTypes.number,
-  y: PropTypes.number,
-});
+export const vec2Obj = (props, propName, componentName) => {
+  const passes = isVec2Shape(props[propName]);
+  return passes ? null : new Error(`${propName} in ${componentName} is not a vec2 shape`);
+};
 
-export const vec3Shape = PropTypes.shape({
-  x: PropTypes.number,
-  y: PropTypes.number,
-  z: PropTypes.number,
-});
+export const vec3Obj = (props, propName, componentName) => {
+  const passes = isVec3Shape(props[propName]);
+  return passes ? null : new Error(`${propName} in ${componentName} is not a vec3 shape`);
+};
 
-export const glMatrixType = PropTypes.instanceOf(glMatrix.ARRAY_TYPE);
+export const vec2GlMatrix = (props, propName, componentName) => {
+  const passes = isVec2(props[propName]);
+  return passes ? null : new Error(`${propName} in ${componentName} is not a gl-matrix vec2`);
+};
+
+export const vec3GlMatrix = (props, propName, componentName) => {
+  const passes = isVec3(props[propName]);
+  return passes ? null : new Error(`${propName} in ${componentName} is not a gl-matrix vec3`);
+};
+
+export const mat2dGlMatrix = (props, propName, componentName) => {
+  const passes = isMat2d(props[propName]);
+  return passes ? null : new Error(`${propName} in ${componentName} is not a gl-matrix mat2d`);
+};
+
+export const mat4GlMatrix = (props, propName, componentName) => {
+  const passes = isMat4(props[propName]);
+  return passes ? null : new Error(`${propName} in ${componentName} is not a gl-matrix mat4`);
+};

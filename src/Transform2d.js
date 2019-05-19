@@ -2,17 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { mat2d, vec2 } from 'gl-matrix';
 
-import { MULTIPLICATION_ORDER, vec2Shape, glMatrixType } from './constants';
+import { MULTIPLICATION_ORDER, vec2Obj, vec2GlMatrix, mat2dGlMatrix } from './constants';
 import { setVec2FromProp } from './utils';
 
 export default class Transform2d extends React.Component {
   static propTypes = {
-    parentMatrixWorld: glMatrixType,
+    parentMatrixWorld: mat2dGlMatrix,
     multiplicationOrder: PropTypes.oneOf([MULTIPLICATION_ORDER.PRE, MULTIPLICATION_ORDER.POST]),
-    translate: PropTypes.oneOfType([glMatrixType, vec2Shape]),
-    scale: PropTypes.oneOfType([glMatrixType, vec2Shape, PropTypes.number]),
+    translate: PropTypes.oneOfType([vec2GlMatrix, vec2Obj]),
+    scale: PropTypes.oneOfType([vec2GlMatrix, vec2Obj, PropTypes.number]),
     rotate: PropTypes.number,
-    children: PropTypes.node.isRequired,
+    children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
   };
 
   static defaultProps = {
@@ -43,7 +43,7 @@ export default class Transform2d extends React.Component {
 
     if (multiplicationOrder === MULTIPLICATION_ORDER.PRE) {
       mat2d.multiply(matrixWorld, matrix, parentMatrixWorld);
-    } else if (multiplicationOrder === MULTIPLICATION_ORDER.POST) {
+    } else {
       mat2d.multiply(matrixWorld, parentMatrixWorld, matrix);
     }
 
@@ -52,7 +52,7 @@ export default class Transform2d extends React.Component {
         parentMatrixWorld: matrixWorld,
         multiplicationOrder,
         style: {
-          transform: matrixWorld.join(','),
+          transform: `matrix(${matrixWorld.join(',')}`,
         },
       });
     }

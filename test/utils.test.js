@@ -18,6 +18,14 @@ describe('utils', () => {
         expect(res[1]).toEqual(0);
       });
 
+      it('returns a vec2 with 0 when the prop is of an unexpected type', () => {
+        const res = setVec2FromProp(out, true);
+
+        expect(res).toBe(out);
+        expect(res[0]).toEqual(0);
+        expect(res[1]).toEqual(0);
+      });
+
       it('returns a vec2 with the default values when the prop is not set and a default value is set', () => {
         const res = setVec2FromProp(out, undefined, 2);
 
@@ -138,6 +146,15 @@ describe('utils', () => {
     function runVec3SharedTests() {
       it('returns a vec3 with 0 when the prop is not set', () => {
         const res = setVec3FromProp(out, undefined);
+
+        expect(res).toBe(out);
+        expect(res[0]).toEqual(0);
+        expect(res[1]).toEqual(0);
+        expect(res[2]).toEqual(0);
+      });
+
+      it('returns a vec2 with 0 when the prop is of an unexpected type', () => {
+        const res = setVec3FromProp(out, true);
 
         expect(res).toBe(out);
         expect(res[0]).toEqual(0);
