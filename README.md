@@ -1,5 +1,7 @@
 [![npm version](https://badge.fury.io/js/react-css-transform.svg)](https://badge.fury.io/js/react-css-transform)
 ![dependencies](https://david-dm.org/baseten/react-css-transform.svg)
+![travis build](https://travis-ci.com/baseten/react-css-transform.svg?branch=master)
+[![codecov](https://codecov.io/gh/baseten/react-css-transform/branch/master/graph/badge.svg)](https://codecov.io/gh/baseten/react-css-transform)
 
 # React CSS Transform
 
