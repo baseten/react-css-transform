@@ -17,6 +17,19 @@ under the hood. It's a peer dependency so install like so:
 
 `npm install gl-matrix react-css-transform --save`
 
+## Why
+
+While it might be a little niche, there have been several projects over the last few years
+where I've thought about writing this and ended up going with a "faster", hackier
+solution using nested divs and manual inline calculations. Often the nested divs caused
+me problems with mouse and UI events. I thought I'd do it properly this time and thanks to
+Pest Pulse for letting me open source it.
+
+If you're just doing basic transforms on a single element, you probably don't need this 
+library. It is super useful for doing nested transformations and it can be useful on a 
+single element if you want to ensure consistent application of the transform, scale and 
+rotate transformations. If you hadn't noticed the order is important!
+
 ## Examples
 
 [3D Cubes Example](https://baseten.github.io/react-css-transform/3d-cubes/index.html)
@@ -156,28 +169,32 @@ to pass scale in as an object rather than a number (otherwise z will be scaled t
 
 ### Performance
 
-When running in development mode, `propTypes` checking can cause significant performance 
-bottlenecks particularly if running `render` in a `requestAnimationFrame`. If you're 
-seeing performance issues, try running a production build first.
+The library is generally very performant, mainly as it leverages the brilliant `gl-matrix`
+library and obviously React's virtual DOM. There are a couple of issues it's worth being
+aware of though. These are mainly applicable when doing 3D transformations and/or when
+calling `render` in a `requestAnimationFrame` callback:
 
-With standard React apps you've probably got used to declaring lambdas and object literals
-inline in your render method. People sometimes talk about how this is a performance hit, 
-but realistically for standard UI where renders are mostly limited to user interaction, 
-it's going to make no noticeable difference and the readability is worth it.
+* When running in development mode, `propTypes` checking can cause performance bottlenecks.
+Chrome seems to suffer from this more than Firefox and Safari. If you're seeing 
+performance issues, try running a production build first before going down any other 
+rabbit holes.
 
-If you're gonna do 3D transformations every frame, or more specifically call `render` as
-the result of a `requestAnimationFrame` callback, you *may* want to reconsider this.
-Modern browsers can create and dispose of objects and arrays very quickly, but when they're
-disposed of the garbage collector *may* cause a janky animation. As with all 
+* With standard React apps you've probably got used to declaring lambdas and object literals
+inline in your render method. For standard UI where renders are normally limited to user 
+interaction, you most likely won't notice a performance hit doing this. If you're gonna do 
+3D transformations or just a complex `render` every frame, you *may* want to reconsider 
+this. Modern browsers can create and dispose of objects and arrays very quickly, but when 
+they're disposed of the garbage collector *may* cause a janky animation. As with all 
 performance optimization don't do it unless you need to. Just sayin' :) 
 
 ### IE10 and IE11
 
 IE10 and IE11 famously don't support `preserve-3d`. To a certain extent this library can
-help with issues here because it won't create any nested DOM elements, but will compute
-the correct matrices to use on a single set of children. However, you will still very
-likely run into z order issues as IE will maintain DOM / z-index order over 3D z position, 
-so doing complex 3D transformations in these browsers is not really possible.
+help with issues here because it doesn't create any nested DOM elements, but computes 
+matrices to use on a single set of children. However, you will still very likely run into 
+z order issues as IE will maintain DOM / z-index order over 3D z position. This 
+restriction makes doing complex 3D transformations in these browsers impossible. 
+Ultimately it depends on your use case and whether you have to support them.
 
 ## How it works
 
