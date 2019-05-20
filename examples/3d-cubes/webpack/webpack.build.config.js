@@ -16,7 +16,7 @@ const buildConfig = {
   output: {
     filename: '[name]-[chunkhash].js',
     chunkFilename: '[name]-[chunkhash].chunk.js',
-    path: `${rootPath}/website/3d-cubes`,
+    path: `${rootPath}/docs/3d-cubes`,
   },
 };
 
