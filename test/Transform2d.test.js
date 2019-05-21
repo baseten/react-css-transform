@@ -79,6 +79,23 @@ describe('<Transform2d />', () => {
       expect(instance.matrixWorld[4]).toBeCloseTo(0, 6);
       expect(instance.matrixWorld[5]).toBeCloseTo(10, 6);
     });
+
+    it('renders null when no children passed through', () => {
+      const wrapper = shallow(<Transform2d {...props} />);
+      expect(wrapper.get(0)).toBe(null);
+    });
+
+    it('renders null for a child which returns false', () => {
+      // we're mainly testing this doesn't break rendering :)
+      const wrapper = shallow(
+        <Transform2d {...props}>
+          <div />
+          {false && <div />}
+        </Transform2d>
+      );
+
+      expect(wrapper.length).toBe(1);
+    });
   });
 
   function runSharedTests() {

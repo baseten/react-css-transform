@@ -123,6 +123,23 @@ describe('<Transform3d />', () => {
       expect(instance.matrixWorld[14]).toBeCloseTo(20, 6);
       expect(instance.matrixWorld[15]).toBeCloseTo(1, 6);
     });
+
+    it('renders null when no children passed through', () => {
+      const wrapper = shallow(<Transform3d {...props} />);
+      expect(wrapper.get(0)).toBe(null);
+    });
+
+    it('renders null for a child which returns false', () => {
+      // we're mainly testing this doesn't break rendering :)
+      const wrapper = shallow(
+        <Transform3d {...props}>
+          <div />
+          {false && <div />}
+        </Transform3d>
+      );
+
+      expect(wrapper.length).toBe(1);
+    });
   });
 
   function runSharedTests() {

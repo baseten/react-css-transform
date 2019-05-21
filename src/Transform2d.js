@@ -12,7 +12,7 @@ export default class Transform2d extends React.Component {
     translate: PropTypes.oneOfType([vec2GlMatrix, vec2Obj]),
     scale: PropTypes.oneOfType([vec2GlMatrix, vec2Obj, PropTypes.number]),
     rotate: PropTypes.number,
-    children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
+    children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   };
 
   static defaultProps = {
@@ -28,6 +28,10 @@ export default class Transform2d extends React.Component {
   render() {
     const { children, parentMatrixWorld, multiplicationOrder, translate, scale, rotate } = this.props;
     const { matrix, matrixWorld, vTranslation, vScale } = this;
+
+    if (!children) {
+      return null;
+    }
 
     const theta = typeof rotate === 'number' ? rotate : 0;
 
@@ -61,6 +65,10 @@ export default class Transform2d extends React.Component {
   }
 
   renderChild = child => {
+    if (!child) {
+      return null;
+    }
+
     const { multiplicationOrder } = this.props;
     const { matrixWorld } = this;
 

@@ -13,7 +13,7 @@ export default class Transform3d extends React.Component {
     scale: PropTypes.oneOfType([vec3GlMatrix, vec3Obj, PropTypes.number]),
     rotate: PropTypes.number,
     rotateAxis: PropTypes.oneOfType([vec3GlMatrix, vec3Obj]),
-    children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
+    children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   };
 
   static defaultProps = {
@@ -35,6 +35,10 @@ export default class Transform3d extends React.Component {
   render() {
     const { children, parentMatrixWorld, multiplicationOrder, translate, rotate, rotateAxis, scale } = this.props;
     const { matrix, matrixWorld, vTranslation, vScale, vRotationAxis } = this;
+
+    if (!children) {
+      return null;
+    }
 
     const theta = typeof rotate === 'number' ? rotate : 0;
 
@@ -69,6 +73,10 @@ export default class Transform3d extends React.Component {
   }
 
   renderChild = child => {
+    if (!child) {
+      return null;
+    }
+
     const { multiplicationOrder } = this.props;
     const { matrixWorld } = this;
 
