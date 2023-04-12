@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import type {
   CSSMatrixPrefix,
   GLMatrixType,
+  MappableChildren,
   MultiplicationOrder,
   TransformChildProps,
   TransformChildren,
@@ -80,7 +81,11 @@ export const useRender = <Matrix extends GLMatrixType>({
         });
       }
 
-      return <>{React.Children.map(children, renderChild)}</>;
+      // TODO: Bug with react types? Can't this accept React.ReactNode(s)
+      // not just React.ReactElement(s)?
+      return (
+        <>{React.Children.map(children as MappableChildren, renderChild)}</>
+      );
     },
     [matrixString, matrixWorld, multiplicationOrder, renderChild],
   );

@@ -11,7 +11,6 @@ module.exports = {
     },
   },
   moduleDirectories: ['node_modules', 'src'],
-  setupFiles: ['raf/polyfill', '<rootDir>/jest/enzyme-setup.ts'],
   setupFilesAfterEnv: ['<rootDir>/jest/test-bundler.ts'],
   testRegex: '.*\\.test\\.(ts|js|tsx|jsx)$',
   watchPlugins: [

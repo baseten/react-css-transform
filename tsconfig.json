@@ -15,7 +15,11 @@
     "strict": true,
     "target": "ESNext"
   },
-  "files": ["node_modules/jest-extended/types/index.d.ts"],
+  "files": [
+    "node_modules/jest-extended/types/index.d.ts",
+    "jest/jest.d.ts",
+    "jest/test-bundler.ts"
+  ],
   "include": ["src", "test"],
   "exclude": ["dist", "node_modules"],
   "ts-node": {

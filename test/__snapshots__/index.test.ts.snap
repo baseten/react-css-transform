@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index export modules for react-css-transform 1`] = `
+{
+  "Transform2d": [Function],
+  "Transform3d": [Function],
+  "mat2dGlMatrix": [Function],
+  "mat4GlMatrix": [Function],
+  "useFactoryRef": [Function],
+  "vec2GlMatrix": [Function],
+  "vec2Obj": [Function],
+  "vec3GlMatrix": [Function],
+  "vec3Obj": [Function],
+}
+`;

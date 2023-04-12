@@ -13,11 +13,11 @@ import type {
 
 const propTypes = {
   parentMatrixWorld: mat2dGlMatrix,
-  multiplicationOrder: PropTypes.oneOf(['PRE', 'POST']),
+  multiplicationOrder: PropTypes.oneOf(['PRE', 'POST']).isRequired,
   translate: PropTypes.oneOfType([vec2GlMatrix, vec2Obj]),
   scale: PropTypes.oneOfType([vec2GlMatrix, vec2Obj, PropTypes.number]),
   rotate: PropTypes.number,
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
 };
 
 export type Transform2dProps = {

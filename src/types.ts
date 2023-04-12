@@ -58,9 +58,13 @@ export type TransformChildProps<Matrix extends GLMatrixType> = {
 
 export type TransformChildFunction<Matrix extends GLMatrixType> = (
   params: TransformChildProps<Matrix>,
-) => JSX.Element;
+) => JSX.Element | null;
+
+export type TransformNode = React.ReactElement | boolean | null | undefined;
 
 export type TransformChildren<Matrix extends GLMatrixType> =
-  | React.ReactElement
-  | React.ReactElement[]
+  | TransformNode
+  | TransformNode[]
   | TransformChildFunction<Matrix>;
+
+export type MappableChildren = React.ReactElement | React.ReactElement[];

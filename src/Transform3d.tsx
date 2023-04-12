@@ -13,12 +13,12 @@ import type {
 
 const propTypes = {
   parentMatrixWorld: mat4GlMatrix,
-  multiplicationOrder: PropTypes.oneOf(['PRE', 'POST']),
+  multiplicationOrder: PropTypes.oneOf(['PRE', 'POST']).isRequired,
   translate: PropTypes.oneOfType([vec3GlMatrix, vec3Obj]),
   scale: PropTypes.oneOfType([vec3GlMatrix, vec3Obj, PropTypes.number]),
   rotate: PropTypes.number,
   rotateAxis: PropTypes.oneOfType([vec3GlMatrix, vec3Obj]),
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
 };
 
 export type Transform3dProps = {
