@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { mat4, vec3 } from 'gl-matrix';
 
-import { vec3Obj, vec3GlMatrix, mat4GlMatrix } from './constants';
+import { vec3Obj, vec3GlMatrix, mat4GlMatrix } from './propTypes';
 import { setVec3FromProp } from './utils';
 import { useFactoryRef } from './useFactoryRef';
 import { useRender } from './useRender';
@@ -13,7 +13,7 @@ import type {
 
 const propTypes = {
   parentMatrixWorld: mat4GlMatrix,
-  multiplicationOrder: PropTypes.oneOf(['PRE', 'POST']).isRequired,
+  multiplicationOrder: PropTypes.oneOf(['PRE', 'POST']),
   translate: PropTypes.oneOfType([vec3GlMatrix, vec3Obj]),
   scale: PropTypes.oneOfType([vec3GlMatrix, vec3Obj, PropTypes.number]),
   rotate: PropTypes.number,
@@ -22,7 +22,7 @@ const propTypes = {
 };
 
 export type Transform3dProps = {
-  children: TransformChildren<mat4>;
+  children?: TransformChildren<mat4>;
   parentMatrixWorld?: mat4;
   multiplicationOrder?: MultiplicationOrder;
   translate?: vec3 | Vec3Object;

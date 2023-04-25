@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { mat2d, vec2 } from 'gl-matrix';
 
-import { vec2Obj, vec2GlMatrix, mat2dGlMatrix } from './constants';
+import { vec2Obj, vec2GlMatrix, mat2dGlMatrix } from './propTypes';
 import { setVec2FromProp } from './utils';
 import { useFactoryRef } from './useFactoryRef';
 import { useRender } from './useRender';
@@ -13,7 +13,7 @@ import type {
 
 const propTypes = {
   parentMatrixWorld: mat2dGlMatrix,
-  multiplicationOrder: PropTypes.oneOf(['PRE', 'POST']).isRequired,
+  multiplicationOrder: PropTypes.oneOf(['PRE', 'POST']),
   translate: PropTypes.oneOfType([vec2GlMatrix, vec2Obj]),
   scale: PropTypes.oneOfType([vec2GlMatrix, vec2Obj, PropTypes.number]),
   rotate: PropTypes.number,
@@ -21,7 +21,7 @@ const propTypes = {
 };
 
 export type Transform2dProps = {
-  children: TransformChildren<mat2d>;
+  children?: TransformChildren<mat2d>;
   parentMatrixWorld?: mat2d;
   multiplicationOrder?: MultiplicationOrder;
   translate?: vec2 | Vec2Object;

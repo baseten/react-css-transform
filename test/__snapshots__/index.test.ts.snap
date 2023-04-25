@@ -6,6 +6,7 @@ exports[`index export modules for react-css-transform 1`] = `
   "Transform3d": [Function],
   "mat2dGlMatrix": [Function],
   "mat4GlMatrix": [Function],
+  "mat4GlMatrixValidator": [Function],
   "useFactoryRef": [Function],
   "vec2GlMatrix": [Function],
   "vec2Obj": [Function],
