@@ -8,6 +8,8 @@
     "pretest": "npm run test:clean && npm run lint:js",
     "test:clean": "rimraf ./coverage",
     "test": "cross-env NODE_ENV=test jest --coverage",
+    "test:ci": "cross-env NODE_ENV=test jest",
+    "test:types": "tsc --noEmit",
     "test:watch": "cross-env NODE_ENV=test jest --watchAll",
     "build:esm": "cross-env BABEL_ENV=esm babel src -d dist/esm",
     "build:cjs": "cross-env BABEL_ENV=cjs babel src -d dist/cjs",
