@@ -7,7 +7,13 @@ import {
 const format = getBuildFormat();
 const buildType = isProductionBuild() ? '' : '-dev';
 
-const external = ['gl-matrix', 'prop-types', 'react', 'react-dom'];
+const external = [
+  'gl-matrix',
+  'prop-types',
+  'react',
+  'react-dom',
+  'react/jsx-runtime',
+];
 
 const buildFormats = format ? [format] : ['cjs', 'es'];
 const builds = buildFormats.map((buildFormat) =>
