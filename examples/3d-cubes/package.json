@@ -1,49 +1,27 @@
 {
   "name": "3d-cubes",
   "version": "1.0.0",
+  "description": "3D Cubes React CSS Transform Example",
+  "main": "index.html",
   "private": true,
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
   "dependencies": {
-    "gl-matrix": "^3.0.0",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "gl-matrix": "^3.4.3",
+    "parcel-bundler": "^1.6.1",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-css-transform": "*",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.4",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/plugin-transform-modules-commonjs": "^7.4.4",
-    "@babel/polyfill": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
-    "@babel/preset-react": "^7.0.0",
-    "autoprefixer": "^9.5.1",
-    "babel-loader": "^8.0.6",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
-    "circular-dependency-plugin": "^5.0.2",
-    "cross-env": "^5.2.0",
-    "css-loader": "^2.1.1",
-    "html-webpack-plugin": "^3.2.0",
-    "mini-css-extract-plugin": "^0.6.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.1",
-    "postcss-loader": "^3.0.0",
-    "style-loader": "^0.23.1",
-    "terser-webpack-plugin": "^1.2.4",
-    "webpack": "^4.31.0",
-    "webpack-cli": "^3.3.2",
-    "webpack-dev-server": "^3.4.1",
-    "webpack-merge": "^4.2.1"
+    "@types/react": "^18.0.34",
+    "@types/react-dom": "^18.0.11",
+    "typescript": "4.4.4"
   },
-  "scripts": {
-    "build:dev": "cross-env NODE_ENV=development webpack --config webpack/webpack.build.config.js",
-    "build:production": "cross-env NODE_ENV=production webpack --config webpack/webpack.build.config.js",
-    "start": "cross-env NODE_ENV=development node ./webpack/dev-server.js"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "resolutions": {
+    "@babel/preset-env": "7.13.8"
+  }
 }

@@ -1,5 +1,7 @@
 module.exports = {
-  collectCoverageFrom: ['src/**/*.js'],
+  preset: 'ts-jest',
+  testEnvironment: 'jsdom',
+  collectCoverageFrom: ['src/**/*.{js,ts,jsx,tsx}'],
   coverageThreshold: {
     global: {
       statements: 95,
@@ -9,8 +11,10 @@ module.exports = {
     },
   },
   moduleDirectories: ['node_modules', 'src'],
-  setupFiles: ['raf/polyfill', '<rootDir>/jest/enzyme-setup.js'],
-  setupFilesAfterEnv: ['<rootDir>/jest/test-bundler.js'],
-  testRegex: '.*\\.test\\.js$',
-  watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
+  setupFilesAfterEnv: ['<rootDir>/jest/test-bundler.ts'],
+  testRegex: '.*\\.test\\.(ts|js|tsx|jsx)$',
+  watchPlugins: [
+    'jest-watch-typeahead/filename',
+    'jest-watch-typeahead/testname',
+  ],
 };

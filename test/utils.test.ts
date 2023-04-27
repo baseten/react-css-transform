@@ -3,7 +3,7 @@ import { setVec2FromProp, setVec3FromProp } from '../src/utils';
 
 describe('utils', () => {
   describe('setVec2FromProp', () => {
-    let out;
+    let out: vec2;
 
     beforeEach(() => {
       out = vec2.create();
@@ -19,6 +19,7 @@ describe('utils', () => {
       });
 
       it('returns a vec2 with 0 when the prop is of an unexpected type', () => {
+        // @ts-ignore - deliberately testing bad input
         const res = setVec2FromProp(out, true);
 
         expect(res).toBe(out);
@@ -117,7 +118,7 @@ describe('utils', () => {
     });
 
     describe('using Array', () => {
-      let originalArrayType;
+      let originalArrayType: ArrayConstructor | Float32ArrayConstructor;
 
       beforeAll(() => {
         originalArrayType = glMatrix.ARRAY_TYPE;
@@ -137,7 +138,7 @@ describe('utils', () => {
   });
 
   describe('setVec3FromProp', () => {
-    let out;
+    let out: vec3;
 
     beforeEach(() => {
       out = vec3.create();
@@ -154,6 +155,7 @@ describe('utils', () => {
       });
 
       it('returns a vec2 with 0 when the prop is of an unexpected type', () => {
+        // @ts-ignore - deliberately testing bad input
         const res = setVec3FromProp(out, true);
 
         expect(res).toBe(out);
@@ -290,7 +292,7 @@ describe('utils', () => {
     });
 
     describe('using Array', () => {
-      let originalArrayType;
+      let originalArrayType: ArrayConstructor | Float32ArrayConstructor;
 
       beforeAll(() => {
         originalArrayType = glMatrix.ARRAY_TYPE;

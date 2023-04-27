@@ -1,6 +1,7 @@
 /.idea
+/build
+/coverage
 /dist
-build
-node_modules
 /docs
 /examples
+/node_modules

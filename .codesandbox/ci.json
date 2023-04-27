@@ -1,0 +1,4 @@
+{
+  "sandboxes": ["/examples/3d-cubes"],
+  "node": "18"
+}
