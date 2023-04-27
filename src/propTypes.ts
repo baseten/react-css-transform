@@ -9,16 +9,16 @@ import {
 } from './utils';
 
 type PropTypes = { [key: string]: any };
-interface PropTypeValidator {
+type PropTypeValidator = {
   <P extends PropTypes>(
     props: P,
     propName: string & keyof P,
     componentName: string,
   ): null | Error;
-}
-interface PropTypeWithRequired extends PropTypeValidator {
+};
+type PropTypeWithRequired = PropTypeValidator & {
   isRequired: PropTypeValidator;
-}
+};
 
 function createPropType<P extends PropTypes>(
   validator: PropTypeValidator,
@@ -51,11 +51,12 @@ const vec2ObjValidator = <P extends PropTypes>(
     : new Error(`${propName} in ${componentName} is not a vec2 shape`);
 };
 
-export const vec2Obj: PropTypeWithRequired = createPropType(
-  vec2ObjValidator,
-  false,
-) as PropTypeWithRequired;
-vec2Obj.isRequired = createPropType(vec2ObjValidator, true);
+export const vec2Obj: PropTypeWithRequired = Object.assign(
+  createPropType(vec2ObjValidator, false),
+  {
+    isRequired: createPropType(vec2ObjValidator, true),
+  },
+);
 
 const vec3ObjValidator = <P extends PropTypes>(
   props: P,
@@ -68,11 +69,10 @@ const vec3ObjValidator = <P extends PropTypes>(
     : new Error(`${propName} in ${componentName} is not a vec3 shape`);
 };
 
-export const vec3Obj: PropTypeWithRequired = createPropType(
-  vec3ObjValidator,
-  false,
-) as PropTypeWithRequired;
-vec3Obj.isRequired = createPropType(vec3ObjValidator, true);
+export const vec3Obj: PropTypeWithRequired = Object.assign(
+  createPropType(vec3ObjValidator, false),
+  { isRequired: createPropType(vec3ObjValidator, true) },
+);
 
 const vec2GlMatrixValidator = <P extends PropTypes>(
   props: P,
@@ -85,11 +85,12 @@ const vec2GlMatrixValidator = <P extends PropTypes>(
     : new Error(`${propName} in ${componentName} is not a gl-matrix vec2`);
 };
 
-export const vec2GlMatrix: PropTypeWithRequired = createPropType(
-  vec2GlMatrixValidator,
-  false,
-) as PropTypeWithRequired;
-vec2GlMatrix.isRequired = createPropType(vec2GlMatrixValidator, true);
+export const vec2GlMatrix: PropTypeWithRequired = Object.assign(
+  createPropType(vec2GlMatrixValidator, false),
+  {
+    isRequired: createPropType(vec2GlMatrixValidator, true),
+  },
+);
 
 const vec3GlMatrixValidator = <P extends PropTypes>(
   props: P,
@@ -101,11 +102,12 @@ const vec3GlMatrixValidator = <P extends PropTypes>(
     ? null
     : new Error(`${propName} in ${componentName} is not a gl-matrix vec3`);
 };
-export const vec3GlMatrix: PropTypeWithRequired = createPropType(
-  vec3GlMatrixValidator,
-  false,
-) as PropTypeWithRequired;
-vec3GlMatrix.isRequired = createPropType(vec3GlMatrixValidator, true);
+export const vec3GlMatrix: PropTypeWithRequired = Object.assign(
+  createPropType(vec3GlMatrixValidator, false),
+  {
+    isRequired: createPropType(vec3GlMatrixValidator, true),
+  },
+);
 
 const mat2dGlMatrixValidator = <P extends PropTypes>(
   props: P,
@@ -118,11 +120,10 @@ const mat2dGlMatrixValidator = <P extends PropTypes>(
     : new Error(`${propName} in ${componentName} is not a gl-matrix mat2d`);
 };
 
-export const mat2dGlMatrix: PropTypeWithRequired = createPropType(
-  mat2dGlMatrixValidator,
-  false,
-) as PropTypeWithRequired;
-mat2dGlMatrix.isRequired = createPropType(mat2dGlMatrixValidator, true);
+export const mat2dGlMatrix: PropTypeWithRequired = Object.assign(
+  createPropType(mat2dGlMatrixValidator, false),
+  { isRequired: createPropType(mat2dGlMatrixValidator, true) },
+);
 
 export const mat4GlMatrixValidator = <P extends PropTypes>(
   props: P,
@@ -135,8 +136,7 @@ export const mat4GlMatrixValidator = <P extends PropTypes>(
     : new Error(`${propName} in ${componentName} is not a gl-matrix mat4`);
 };
 
-export const mat4GlMatrix: PropTypeWithRequired = createPropType(
-  mat4GlMatrixValidator,
-  false,
-) as PropTypeWithRequired;
-mat4GlMatrix.isRequired = createPropType(mat4GlMatrixValidator, true);
+export const mat4GlMatrix: PropTypeWithRequired = Object.assign(
+  createPropType(mat4GlMatrixValidator, false),
+  { isRequired: createPropType(mat4GlMatrixValidator, true) },
+);
