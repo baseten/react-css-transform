@@ -73,14 +73,13 @@ export function apply2dTransforms({
   }
 }
 
-const Transform2d = ({
-  children,
+export function use2dTransformations({
   parentMatrixWorld,
   translate,
   scale,
   rotate,
   multiplicationOrder = 'POST',
-}: Transform2dProps) => {
+}: Omit<Transform2dProps, 'children'>) {
   const safeParentMatrixWorld = useFactoryRef<mat2d>(
     () => parentMatrixWorld || mat2d.create(),
   );
@@ -99,6 +98,28 @@ const Transform2d = ({
     translate,
     scale,
     rotate,
+  });
+
+  return {
+    matrix,
+    matrixWorld,
+  };
+}
+
+const Transform2d = ({
+  children,
+  parentMatrixWorld,
+  translate,
+  scale,
+  rotate,
+  multiplicationOrder = 'POST',
+}: Transform2dProps) => {
+  const { matrixWorld } = use2dTransformations({
+    parentMatrixWorld,
+    translate,
+    scale,
+    rotate,
+    multiplicationOrder,
   });
 
   const render = useRender<mat2d>({

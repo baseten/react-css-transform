@@ -80,15 +80,14 @@ export function apply3dTransforms({
   }
 }
 
-const Transform3d = ({
-  children,
+export function use3dTransformations({
   parentMatrixWorld,
   translate,
   scale,
   rotate,
   rotateAxis,
   multiplicationOrder = 'POST',
-}: Transform3dProps) => {
+}: Omit<Transform3dProps, 'children'>) {
   const safeParentMatrixWorld = useFactoryRef<mat4>(
     () => parentMatrixWorld || mat4.create(),
   );
@@ -110,6 +109,30 @@ const Transform3d = ({
     scale,
     rotate,
     rotateAxis,
+  });
+
+  return {
+    matrix,
+    matrixWorld,
+  };
+}
+
+const Transform3d = ({
+  children,
+  parentMatrixWorld,
+  translate,
+  scale,
+  rotate,
+  rotateAxis,
+  multiplicationOrder = 'POST',
+}: Transform3dProps) => {
+  const { matrixWorld } = use3dTransformations({
+    parentMatrixWorld,
+    translate,
+    scale,
+    rotate,
+    rotateAxis,
+    multiplicationOrder,
   });
 
   const render = useRender<mat4>({
