@@ -1,9 +1,9 @@
-import { use3dTransformations } from 'react-css-transform';
+import { merge3dMatrixWithStyles, use3dTransformations } from 'react-css-transform';
 import { useGlobalContext } from './GlobalContext';
 import { useFlatShading } from '../useFlatShading';
 import { vec3 } from 'gl-matrix';
 import { useMemo } from 'react';
-import { blendHex, mergeMatrixWithStyles } from '../utils';
+import { blendHex } from '../utils';
 
 import type { CSSProperties } from 'react';
 import type { Transform3dProps } from 'react-css-transform';
@@ -41,7 +41,7 @@ export const Face = ({ color, style, ...transform3dProps }: FaceProps) => {
   });
 
   const faceStyle = useMemo(() => {
-    return mergeMatrixWithStyles(matrixWorld.current, {
+    return merge3dMatrixWithStyles(matrixWorld.current, {
       ...style,
       backgroundColor: outputColorString,
     });
