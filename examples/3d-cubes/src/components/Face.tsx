@@ -26,7 +26,7 @@ export const Face = ({ color, style, ...transform3dProps }: FaceProps) => {
   const { diffuseColor, emissiveColor } = useMemo(() => {
     return {
       diffuseColor: blendHex(color, '#ffffff', 0.1),
-      emissiveColor: blendHex(color, '#000000', 0.333),
+      emissiveColor: blendHex(color, '#000000', 0.5),
     };
   }, [color]);
 
