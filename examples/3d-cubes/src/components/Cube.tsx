@@ -6,7 +6,7 @@ import {
   Transform3dProps,
   useFactoryRef,
 } from 'react-css-transform';
-import { FlatMaterial } from './FlatMaterial';
+import { Face } from './Face';
 import { halfPi, yAxis, xAxis } from '../constants';
 
 const propTypes = {
@@ -46,36 +46,42 @@ export const Cube = ({ faceSize, color, ...otherProps }: CubeProps) => {
 
   return (
     <Transform3d {...otherProps}>
-      <Transform3d translate={pos1.current} rotate={-halfPi} rotateAxis={yAxis}>
-        <FlatMaterial color={color}>
-          <div style={faceStyle} className="face" />
-        </FlatMaterial>
-      </Transform3d>
-      <Transform3d translate={pos2.current} rotate={halfPi} rotateAxis={yAxis}>
-        <FlatMaterial color={color}>
-          <div style={faceStyle} className="face" />
-        </FlatMaterial>
-      </Transform3d>
-      <Transform3d translate={pos3.current} rotate={halfPi} rotateAxis={xAxis}>
-        <FlatMaterial color={color}>
-          <div style={faceStyle} className="face" />
-        </FlatMaterial>
-      </Transform3d>
-      <Transform3d translate={pos4.current} rotate={-halfPi} rotateAxis={xAxis}>
-        <FlatMaterial color={color}>
-          <div style={faceStyle} className="face" />
-        </FlatMaterial>
-      </Transform3d>
-      <Transform3d translate={pos5.current} rotate={Math.PI} rotateAxis={yAxis}>
-        <FlatMaterial color={color}>
-          <div style={faceStyle} className="face" />
-        </FlatMaterial>
-      </Transform3d>
-      <Transform3d translate={pos6.current}>
-        <FlatMaterial color={color}>
-          <div style={faceStyle} className="face" />
-        </FlatMaterial>
-      </Transform3d>
+      <Face
+        translate={pos1.current}
+        rotate={-halfPi}
+        rotateAxis={yAxis}
+        color={color}
+        style={faceStyle}
+      />
+      <Face
+        translate={pos2.current}
+        rotate={halfPi}
+        rotateAxis={yAxis}
+        color={color}
+        style={faceStyle}
+      />
+      <Face
+        translate={pos3.current}
+        rotate={halfPi}
+        rotateAxis={xAxis}
+        color={color}
+        style={faceStyle}
+      />
+      <Face
+        translate={pos4.current}
+        rotate={-halfPi}
+        rotateAxis={xAxis}
+        color={color}
+        style={faceStyle}
+      />
+      <Face
+        translate={pos5.current}
+        rotate={Math.PI}
+        rotateAxis={yAxis}
+        color={color}
+        style={faceStyle}
+      />
+      <Face translate={pos6.current} color={color} style={faceStyle} />
     </Transform3d>
   );
 };
