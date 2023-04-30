@@ -1,17 +1,12 @@
-import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Transform3d, useFactoryRef } from 'react-css-transform';
 import { vec3 } from 'gl-matrix';
 import { CubeGroup } from './components/CubeGroup';
 import {
-  DimensionsProvider,
-  useDimensionsContext,
-} from './components/DimensionsContext';
+  GlobalStateProvider,
+  useGlobalContext,
+} from './components/GlobalContext';
 import { yAxis, zAxis } from './constants';
 
 import './styles.css';
@@ -19,13 +14,15 @@ import './styles.css';
 const frameTime = 1000 / 60;
 
 const BaseApp = () => {
-  const { width, height, perspective } = useDimensionsContext();
+  const { width, height, perspective } = useGlobalContext();
   const appStyle = useMemo(
     () => ({
       perspective,
     }),
     [perspective],
   );
+
+  const [time, setTime] = useState(() => performance.now());
 
   const [playing, setPlaying] = useState(true);
   const togglePlaying = useCallback(() => {
@@ -55,8 +52,6 @@ const BaseApp = () => {
 
     requestAnimationFrame(update);
   }, [playing]);
-
-  const [time, setTime] = useState(() => performance.now());
 
   const translateToCentre = useFactoryRef<vec3>(() => vec3.create());
   const cubeGroup1Translate = useFactoryRef<vec3>(() => vec3.create());
@@ -94,9 +89,9 @@ const BaseApp = () => {
 
 const App = () => {
   return (
-    <DimensionsProvider>
+    <GlobalStateProvider>
       <BaseApp />
-    </DimensionsProvider>
+    </GlobalStateProvider>
   );
 };
 

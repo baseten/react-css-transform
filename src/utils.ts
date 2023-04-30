@@ -1,10 +1,12 @@
 import { vec2, vec3, glMatrix, mat2d, mat4 } from 'gl-matrix';
+import type { CSSProperties } from 'react';
 import type {
   GLMatrixType,
   Vec2Object,
   Vec3Object,
   Vec2SettableProperty,
   Vec3SettableProperty,
+  CSSMatrixPrefix,
 } from './types';
 
 export const isNil = (val: any) => val === null || val === undefined;
@@ -104,4 +106,37 @@ export function setVec3FromProp(
   }
 
   return vec3.set(v, x, y, z);
+}
+
+export const getCSSMatrixString = <Matrix extends GLMatrixType>(
+  matrixPrefix: CSSMatrixPrefix,
+  matrix: Matrix,
+): string => {
+  return `${matrixPrefix}(${matrix.join(',')})`;
+};
+
+export const get2dCSSMatrixString = (matrix: mat2d): string =>
+  getCSSMatrixString('matrix', matrix);
+
+export const get3dCSSMatrixString = (matrix: mat4): string =>
+  getCSSMatrixString('matrix3d', matrix);
+
+export function merge2dMatrixWithStyles(
+  matrix: mat2d,
+  styles: CSSProperties,
+): CSSProperties {
+  return {
+    ...styles,
+    transform: get2dCSSMatrixString(matrix),
+  };
+}
+
+export function merge3dMatrixWithStyles(
+  matrix: mat4,
+  styles: CSSProperties,
+): CSSProperties {
+  return {
+    ...styles,
+    transform: get3dCSSMatrixString(matrix),
+  };
 }

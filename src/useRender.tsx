@@ -7,6 +7,7 @@ import type {
   TransformChildProps,
   TransformChildren,
 } from './types';
+import { getCSSMatrixString } from './utils';
 
 type UseRenderChildParams<Matrix extends GLMatrixType> = {
   matrixString: string;
@@ -57,8 +58,13 @@ export const useRender = <Matrix extends GLMatrixType>({
   matrixWorld,
   multiplicationOrder,
 }: UseRenderParams<Matrix>) => {
-  const matrixString = `${cssMatrixPrefix}(${matrixWorld.current?.join(',')})`;
+  const matrixString = getCSSMatrixString(
+    cssMatrixPrefix,
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    matrixWorld.current!,
+  );
 
+  // TODO: profile whether the useCallbacks in useRenderChild and below are actually a perf hindrance...
   const renderChild = useRenderChild<Matrix>({
     matrixWorld,
     matrixString,
