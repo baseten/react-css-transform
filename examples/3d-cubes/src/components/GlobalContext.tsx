@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { vec3 } from 'gl-matrix';
 import type { ReactNode } from 'react';
 
@@ -10,11 +10,16 @@ type GlobalState = {
   lightColor: string;
 };
 
+const updatePerspective = (height: number) => (500 / 750) * height;
+
+const updateLightPosition = (width: number, height: number, v: vec3) =>
+  vec3.set(v, width / 4, height / 4, 100);
+
 const getDefaultState = (width: number, height: number): GlobalState => ({
   width,
   height,
-  perspective: (500 / 750) * height,
-  lightPosition: vec3.fromValues(width / 3, height / 3, 0),
+  perspective: updatePerspective(height),
+  lightPosition: updateLightPosition(width, height, vec3.create()),
   lightColor: '#ffffff',
 });
 
@@ -27,8 +32,8 @@ const updateGlobalStateDimensions = (
     ...state,
     width,
     height,
-    perspective: (500 / 750) * height,
-    lightPosition: vec3.set(state.lightPosition, width / 3, height / 3, 0),
+    perspective: updatePerspective(height),
+    lightPosition: updateLightPosition(width, height, state.lightPosition),
   };
 };
 

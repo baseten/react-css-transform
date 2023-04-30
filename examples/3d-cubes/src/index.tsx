@@ -22,6 +22,8 @@ const BaseApp = () => {
     [perspective],
   );
 
+  const [time, setTime] = useState(() => performance.now());
+
   const [playing, setPlaying] = useState(true);
   const togglePlaying = useCallback(() => {
     setPlaying((isPlaying) => !isPlaying);
@@ -50,8 +52,6 @@ const BaseApp = () => {
 
     requestAnimationFrame(update);
   }, [playing]);
-
-  const [time, setTime] = useState(() => performance.now());
 
   const translateToCentre = useFactoryRef<vec3>(() => vec3.create());
   const cubeGroup1Translate = useFactoryRef<vec3>(() => vec3.create());
